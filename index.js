@@ -1,6 +1,7 @@
 const redux = require("redux");
 const createStore = redux.createStore;
 const BUY_CAKE = "BUY_CAKE";
+const BUY_ICECREAM = "BUY_ICECREAM";
 
 // Action
 function buyCake() {
@@ -9,10 +10,17 @@ function buyCake() {
     info: "First redux action",
   };
 }
+function buyIcecream() {
+  return {
+    type: BUY_ICECREAM,
+    info: "First redux action",
+  };
+}
 
 // Setting up initial state
 const initialState = {
   numOfCakes: 10,
+  numOfIcecreams: 20,
 };
 
 // reducer function - (prevState,action) => nextState
@@ -22,6 +30,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         numOfCakes: state.numOfCakes - 1,
+      };
+    case BUY_ICECREAM:
+      return {
+        ...state,
+        numOfIcecreams: state.numOfIcecreams - 1,
       };
     default:
       return state;
@@ -38,5 +51,7 @@ const unsubscribe = store.subscribe(() => {
 store.dispatch(buyCake());
 store.dispatch(buyCake());
 store.dispatch(buyCake());
+store.dispatch(buyIcecream());
+store.dispatch(buyIcecream());
+store.dispatch(buyIcecream());
 unsubscribe();
-store.dispatch(buyCake());  // doesn't execute since listener is unsubscribed
