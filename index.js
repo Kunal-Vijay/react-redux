@@ -19,6 +19,10 @@ function buyIcecream() {
   return {
     type: BUY_ICECREAM,
   };
+
+
+
+  
 }
 
 // Setting up initial state
